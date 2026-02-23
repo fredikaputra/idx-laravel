@@ -40,6 +40,9 @@
 
       cp .env.example .env
 
+      sed -i "s|^APP_URL=.*|APP_URL=https://9000-$WEB_HOST|" .env
+      sed -i "s|^HMR_HOST=.*|HMR_HOST=5173-$WEB_HOST|" .env
+
       composer setup
 
       cat <<EOF > patch-vite.ts
