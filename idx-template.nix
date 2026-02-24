@@ -34,7 +34,7 @@
       sed -i 's/\("php": "[^0-9]*\)8\.[0-9]\+/\18.4/' composer.json
 
       echo "" >> .env.example
-      echo 'ASSET_URL="${APP_URL}"' >> .env.example
+      echo 'ASSET_URL="''${APP_URL}"' >> .env.example
       echo "" >> .env.example
       echo "HMR_HOST=" >> .env.example
       echo "HMR_PORT=443" >> .env.example
