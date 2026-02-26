@@ -36,20 +36,15 @@ Simply click the button below to launch the template directly in Firebase Studio
   </picture>
 </a>
 
-## 🛠️ Network Configuration (Crucial)
-To ensure the environment functions correctly, you must adjust the port visibility in the **Backend Ports** tab:
+## 🛠️ Network Configuration
 
-1. **Vite Development Server**
+To ensure the environment functions correctly, you must adjust the port visibility in the **Backend Ports** tab. This allows your local browser to communicate with the frontend development tools properly.
 
-- Port: `5173`
-- Visibility: Change from Private to Public.
-- Reason: Allows your browser to load hot-reloaded assets and CSS.
+**Port**
+`5173`
 
-2. **Laravel Development Server**
-
-- Port: `9000`
-- Visibility: Change from Private to Public.
-- Reason: The headless browser runner requires a public tunnel to access the application. If this is set to private, tests will fail.
+**Visibility**
+Change from **Private** to **Public**.
 
 ## 🧪 Browser Testing (Pest)
 

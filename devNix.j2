@@ -72,26 +72,18 @@ in
       sed -i "s|^HMR_HOST=.*|HMR_HOST=5173-$WEB_HOST|" .env
       sed -i 's|="''${APP_NAME}"|=Laravel|g' .env
       echo "alias test='bun run build && mv public/hot public/hot-bak && xvfb-run composer test && mv public/hot-bak public/hot && rm -r public/build'" > ~/.bash_aliases
-      composer setup
       bunx playwright install
+      composer setup
     '';
     previews = {
       enable = true;
       previews = {
         vite = {
-          command = [ "bun" "dev" ];
+          command = [ "bun" "run" "dev" ];
           manager = "web";
         };
         web = {
           command = [ "php" "artisan" "serve" "--port" "$PORT" "--host" "0.0.0.0" ];
-          manager = "web";
-        };
-        queue = {
-          command = [ "php" "artisan" "queue:listen" ];
-          manager = "web";
-        };
-        schedule = {
-          command = [ "php" "artisan" "schedule:work" ];
           manager = "web";
         };
       };
