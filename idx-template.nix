@@ -6,5 +6,8 @@
       pkgs.j2cli
       pkgs.curl
     ];
-    bootstrap = "ls -la";
+    bootstrap = ''
+      cp -rf ${./.}/* .
+      ./bootstrap.sh
+    '';
 }
