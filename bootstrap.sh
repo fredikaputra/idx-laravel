@@ -29,6 +29,9 @@ case "$kit" in
     "svelte")
         composer create-project laravel/blank-svelte-starter-kit "$out" --stability=dev
         ;;
+    "api")
+        git clone --depth 1 https://github.com/juststeveking/kit "$out" && rm -rf "$out/.git"
+        ;;
     *)
         composer create-project laravel/laravel "$out" --remove-vcs --prefer-dist --no-scripts
         ;;
@@ -37,16 +40,19 @@ esac
 mkdir -p "$out/.idx"
 cp setup.sh "$out/.idx/"
 j2 ./devNix.j2 -o "$out/.idx/dev.nix"
-bun ./patch-vite.ts "$out"
+
+[[ $kit != "api" ]] && bun ./patch-vite.ts "$out"
 
 cd "$out"
 
-echo "" >> .env.example
-echo 'ASSET_URL="''${APP_URL}"' >> .env.example
-echo "" >> .env.example
-echo "HMR_HOST=" >> .env.example
-echo "HMR_PORT=443" >> .env.example
-echo "HMR_PROTOCOL=wss" >> .env.example
+if [[ "$kit" != "api" ]]; then
+    echo "" >> .env.example
+    echo 'ASSET_URL="''${APP_URL}"' >> .env.example
+    echo "" >> .env.example
+    echo "HMR_HOST=" >> .env.example
+    echo "HMR_PORT=443" >> .env.example
+    echo "HMR_PROTOCOL=wss" >> .env.example
+fi
 
 cp .env.example .env
 sed -i 's/\("php": "[^0-9]*\)8\.[0-9]\+/\18.4/' composer.json

@@ -20,7 +20,8 @@
         "react-strict": "React Starter Kit (Strict)",
         "vue": "Vue Starter Kit",
         "vue-strict": "Vue Starter Kit (Strict)",
-        "svelte": "Svelte Starter Kit"
+        "svelte": "Svelte Starter Kit",
+        "api": "API Starter Kit (Strict)"
       }
     }
   ]

@@ -16,6 +16,7 @@ The environment automatically detects your choice and provisions the correct arc
 | **Vue** | Standard | `laravel/blank-vue-starter-kit` |
 | **Svelte** | Standard | `laravel/blank-svelte-starter-kit` |
 | **Laravel Core** | Default | `laravel/laravel` |
+| **Laravel API** | **Strict** | `juststeveking/kit` |
 
 ## 🚀 Getting Started
 
