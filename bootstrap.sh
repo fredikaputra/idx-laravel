@@ -40,11 +40,11 @@ case "$kit" in
     ;;
 esac
 
-# mkdir -p "$out/.idx"
-# cp setup.sh "$out/.idx/"
-# j2 ./devNix.j2 -o "$out/.idx/dev.nix"
+mkdir -p "$out/.idx"
+cp setup.sh "$out/.idx/"
+j2 ./devNix.j2 -o "$out/.idx/dev.nix"
 
-# [[ $kit != "api" ]] && bun ./patch-vite.ts "$out"
+[[ $kit != "api" ]] && bun ./patch-vite.ts "$out"
 
 # cd "$out"
 
