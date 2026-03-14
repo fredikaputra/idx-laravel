@@ -32,6 +32,12 @@ case "$kit" in
     "api")
         git clone --depth 1 https://github.com/juststeveking/kit "$out" && rm -rf "$out/.git"
         ;;
+    "filament")
+        composer create-project laravel/laravel "$out" --remove-vcs --prefer-dist --no-scripts && cd "$out" && composer require filament/filament && php artisan filament:install --panels && cd ..
+        ;;
+    "wave")
+        curl -LO https://devdojo.com/wave/download && unzip download "$out"
+        ;;
     *)
         composer create-project laravel/laravel "$out" --remove-vcs --prefer-dist --no-scripts
         ;;

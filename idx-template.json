@@ -21,7 +21,9 @@
         "vue": "Vue Starter Kit",
         "vue-strict": "Vue Starter Kit (Strict)",
         "svelte": "Svelte Starter Kit",
-        "api": "API Starter Kit (Strict)"
+        "api": "API Starter Kit (Strict)",
+        "filament": "Filament Starter Kit",
+        "wave": "Wave Starter Kit"
       }
     }
   ]

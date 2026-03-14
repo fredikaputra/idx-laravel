@@ -6,6 +6,7 @@
       pkgs.j2cli
       pkgs.curl
       pkgs.git
+      pkgs.unzip
     ];
     bootstrap = ''
       export kit="${kit}"
