@@ -1,5 +1,18 @@
 #!/bin/bash
 
+echo "DEBUG: kit variable is [$kit]" >&2
+echo "DEBUG: out variable is [$out]" >&2
+
+if [[ "$kit" == "wave" ]]; then
+    echo "DEBUG: Condition met. Copying setup-wave.sh..." >&2
+    cat setup-wave.sh
+else
+    echo "DEBUG: Condition NOT met. Copying setup.sh..." >&2
+    cat setup.sh
+fi
+
+exit 1
+
 echo "#!/bin/sh" >clear
 chmod +x clear
 export PATH="$PWD:$PATH"
