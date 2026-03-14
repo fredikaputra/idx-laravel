@@ -41,7 +41,6 @@ case "$kit" in
 esac
 
 mkdir -p "$out/.idx"
-cp setup.sh "$out/.idx/"
 j2 ./devNix.j2 -o "$out/.idx/dev.nix"
 
 if [[ "$kit" == "wave" ]]; then
@@ -49,22 +48,6 @@ if [[ "$kit" == "wave" ]]; then
 else
     cp setup.sh "$out/.idx/"
 fi
-
-echo "DEBUG: kit variable is [$kit]" >&2
-echo "DEBUG: out variable is [$out]" >&2
-
-if [[ "$kit" == "wave" ]]; then
-    echo "DEBUG: Condition met. Copying setup-wave.sh..." >&2
-    cat setup-wave.sh
-else
-    echo "DEBUG: Condition NOT met. Copying setup.sh..." >&2
-    cat setup.sh
-fi
-
-echo 'the copied'
-cat "$out/.idx/setup.sh"
-
-exit 1
 
 [[ $kit != "api" ]] && bun ./patch-vite.ts "$out"
 
@@ -81,10 +64,10 @@ fi
 
 cp .env.example .env
 
-# if [[ "$kit" != "wave" ]]; then
-#     sed -i 's/\("php": "[^0-9]*\)8\.[0-9]\+/\18.4/' composer.json
-#     composer setup
-#     composer update
-# fi
+if [[ "$kit" != "wave" ]]; then
+    sed -i 's/\("php": "[^0-9]*\)8\.[0-9]\+/\18.4/' composer.json
+    composer setup
+    composer update
+fi
 
-# [[ $kit == "filament" ]] && composer require filament/filament && php artisan filament:install --panels
+[[ $kit == "filament" ]] && composer require filament/filament && php artisan filament:install --panels
