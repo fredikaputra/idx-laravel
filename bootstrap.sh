@@ -49,6 +49,8 @@ else
     cp setup.sh "$out/.idx/"
 fi
 
+chmod +x "$out/.idx/setup.sh"
+
 [[ $kit != "api" ]] && bun ./patch-vite.ts "$out"
 
 cd "$out"
