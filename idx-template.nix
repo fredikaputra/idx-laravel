@@ -11,6 +11,7 @@
     bootstrap = ''
       export kit="${kit}"
       cp -rf ${./.}/* .
+      chmod +x bootstrap.sh
       ./bootstrap.sh
     '';
 }

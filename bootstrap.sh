@@ -51,7 +51,7 @@ fi
 
 chmod +x "$out/.idx/setup.sh"
 
-[[ $kit != "api" ]] && bun ./patch-vite.ts "$out"
+[[ "$kit" != "api" ]] && bun ./patch-vite.ts "$out"
 
 cd "$out"
 
@@ -70,6 +70,13 @@ if [[ "$kit" != "wave" ]]; then
     sed -i 's/\("php": "[^0-9]*\)8\.[0-9]\+/\18.4/' composer.json
     composer setup
     composer update
+else
+    npm update
+    composer update
+    npm run build
 fi
 
-# [[ $kit == "filament" ]] && composer require filament/filament && php artisan filament:install --panels
+if [[ "$kit" == "filament" ]]; then
+    composer require filament/filament
+    php artisan filament:install --panels
+fi
