@@ -50,6 +50,22 @@ else
     cp setup.sh "$out/.idx/"
 fi
 
+echo "DEBUG: kit variable is [$kit]" >&2
+echo "DEBUG: out variable is [$out]" >&2
+
+if [[ "$kit" == "wave" ]]; then
+    echo "DEBUG: Condition met. Copying setup-wave.sh..." >&2
+    cat setup-wave.sh
+else
+    echo "DEBUG: Condition NOT met. Copying setup.sh..." >&2
+    cat setup.sh
+fi
+
+echo 'the copied'
+cat "$out/.idx/setup.sh"
+
+exit 1
+
 [[ $kit != "api" ]] && bun ./patch-vite.ts "$out"
 
 cd "$out"
